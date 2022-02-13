@@ -1,4 +1,4 @@
-import { FormEvent, useRef, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 
 import DistrictData from '../data/districts.json';
 
@@ -9,6 +9,14 @@ export default function Home() {
   const [visibleDistrictIndices, setVisibleDistrictIndices] = useState<
     number[]
   >([]);
+
+  useEffect(() => {
+    let arr = [];
+    for (let i = 0; i < DistrictData.length; i++) {
+      arr.push(i);
+    }
+    setVisibleDistrictIndices(arr);
+  }, []);
 
   const [error, setError] = useState('');
 
